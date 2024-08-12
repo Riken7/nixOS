@@ -158,7 +158,7 @@
 	pkgs.gh
 	pkgs.git
 	pkgs.microsoft-edge-dev
-	#pkgs.postman
+	pkgs.postman
 	pkgs.nodejs_20	
 
 	#only use these packages with gnome
@@ -166,8 +166,8 @@
 	gnome-tweaks
 	
   ];
-  #KdeConnect / GSConnect
-  programs.kdeconnect.enable = true;
+  #KdeConnect
+  programs.kdeconnect.enable = false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
