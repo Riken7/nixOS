@@ -149,6 +149,7 @@
   environment.systemPackages = with pkgs; [
 	pkgs.home-manager
 	vim
+	pkgs.direnv
 	#pkgs.zed-editor
 	pkgs.gedit
 	pkgs.vscode
