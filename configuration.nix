@@ -168,7 +168,10 @@
 	
   ];
   #KdeConnect
-  programs.kdeconnect.enable = false;
+  programs.kdeconnect = {
+	enable = true;
+	package = pkgs.gnomeExtensions.gsconnect;
+	};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
