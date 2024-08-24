@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 	 #including home-manager channel
-         #<home-manager/nixos>
+         <home-manager/nixos>
     ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
