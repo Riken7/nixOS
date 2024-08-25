@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 	 #including home-manager channel
-         <home-manager/nixos>
     ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -203,9 +202,12 @@
 
 	#adding home-manager packages here
         #home-manager.users.rik = { pkgs , ... } : {
-                #home.packages = with pkgs ; [htop ]; OR
-	 #       home.packages = [pkgs.htop];
-
+	#	#home.packages = [pkgs.htop] OR
+        #       home.packages = with pkgs ; [htop ];
+	#	programs.bash.enable = true;
+	#	
+	#	home.stateVersion = "24.05";
+	#	
         #};
 
 }
