@@ -148,7 +148,6 @@
   environment.systemPackages = with pkgs; [
 	pkgs.home-manager
 	vim
-	neovim
 	pkgs.direnv
 	#pkgs.zed-editor
 	pkgs.gedit
