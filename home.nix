@@ -5,6 +5,7 @@
 
 	home.packages = with pkgs; [
 		htop
+		#jetbrains.idea-community-src
 	];
 
 	home.stateVersion = "24.05";
