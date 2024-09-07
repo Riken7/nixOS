@@ -146,12 +146,13 @@
 	  data-root = "/home/rik/.docker_data";
 	};
   environment.systemPackages = with pkgs; [
+  pkgs.wl-clipboard
 	pkgs.home-manager
 	vim
 	pkgs.direnv
 	#pkgs.zed-editor
 	pkgs.gedit
-	pkgs.vscode
+	pkgs.vscode-fhs
 	pkgs.jdk
 	#pkgs.discord
 	pkgs.brave
