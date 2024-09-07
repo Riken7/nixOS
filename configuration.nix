@@ -27,7 +27,9 @@
   }];
   # Enable networking
   networking.networkmanager.enable = true;
-
+  #enabling zsh for rik 
+  programs.zsh.enable = true;
+  users.users.rik.shell = pkgs.zsh;
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
