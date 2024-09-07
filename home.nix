@@ -5,6 +5,7 @@
 
 	home.packages = with pkgs; [
 		htop
+    gnome-terminal 
 		#jetbrains.idea-community-src
 	];
 
