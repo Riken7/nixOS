@@ -6,6 +6,10 @@
 	home.packages = with pkgs; [
 		htop
     gnome-terminal 
+    rofi
+    picom
+    feh
+    arandr
 		#jetbrains.idea-community-src
 	];
 
