@@ -4,6 +4,7 @@
 	home.homeDirectory = "/home/rik";
 
 	home.packages = with pkgs; [
+    awscli
 		htop
     gnome-terminal 
     rofi
@@ -16,7 +17,12 @@
 	home.stateVersion = "24.05";
 
 	programs.home-manager.enable = true;
-	programs.neovim.enable = true;
+	programs.neovim = {
+    enable = true;
+  };
+#  programs.nixvim = {
+#    enable = true;
+#  };
   programs.zsh = {
       enable = true;
       enableCompletion = true;

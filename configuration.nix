@@ -49,55 +49,55 @@
   };
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-#  services.xserver.enable = true;
+  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   #services.displayManager.sddm.enable = true;
   #services.desktopManager.plasma6.enable = true;
 
   # Enable the GNOME DE
-  #services.xserver.displayManager.gdm.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   #exluding pre-installed apps
-	  #environment.gnome.excludePackages = (with pkgs; [
-	  #gnome-photos
-	  #gnome-tour
-	  #gnome-terminal
-	  #epiphany
-	  #geary
-	  #evince # document viewer
-	  #totem # video player
-	#]) ++ (with pkgs.gnome; [
-	 # gnome-music
-	  #gnome-characters
-	  #tali # poker game
-	  #iagno # go game
-	  #hitori # sudoku game
-	  #atomix # puzzle game
-	#]);
+	  environment.gnome.excludePackages = (with pkgs; [
+	  gnome-photos
+	  gnome-tour
+	  gnome-terminal
+	  epiphany
+	  geary
+	  evince # document viewer
+	  totem # video player
+	]) ++ (with pkgs.gnome; [
+	  gnome-music
+	  gnome-characters
+	  tali # poker game
+	  iagno # go game
+	  hitori # sudoku game
+	  atomix # puzzle game
+	]);
 # -- end --
   # i3 setup
-  environment.pathsToLink = [ "/libexec" ];
-
-  services.xserver = {
-    enable = true;
-
-    desktopManager = {
-      xterm.enable = false;  
-    };
-    displayManager = {
-      defaultSession = "none+i3";
-    };
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu #application launcher most people use
-        i3status # gives you the default i3 status bar
-        i3lock #default i3 screen locker
-        i3blocks #if you are planning on using i3blocks over i3status
-     ];
-    };
-  };
+#  environment.pathsToLink = [ "/libexec" ];
+#
+#  services.xserver = {
+#    enable = true;
+#
+#    desktopManager = {
+#      xterm.enable = false;  
+#    };
+#    displayManager = {
+#      defaultSession = "none+i3";
+#    };
+#    windowManager.i3 = {
+#      enable = true;
+#      extraPackages = with pkgs; [
+#        dmenu #application launcher most people use
+#        i3status # gives you the default i3 status bar
+#        i3lock #default i3 screen locker
+#        i3blocks #if you are planning on using i3blocks over i3status
+#     ];
+#    };
+#  };
   # -- end --
 
   # Configure keymap in X11
