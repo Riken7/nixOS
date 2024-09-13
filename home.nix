@@ -4,13 +4,20 @@
 	home.homeDirectory = "/home/rik";
 
 	home.packages = with pkgs; [
+    tmux
+    stremio
+    rclone
     awscli
 		htop
-    gnome-terminal 
-    rofi
-    picom
-    feh
-    arandr
+    gnome-terminal
+    nix-index
+    vscode-fhs
+  #i3 related pkgs ->
+    #rofi
+    #picom
+    #feh
+    #arandr
+
 		#jetbrains.idea-community-src
 	];
 
@@ -31,8 +38,11 @@
       
       shellAliases = {
         ll = "ls -l";
-        update = "sudo nixos-rebuild switch --flake .";
+        update = "cd ~/.dotfiles ; sudo nixos-rebuild switch --flake .";
         open = "xdg-open";
+        onedrive = "rclone --vfs-cache-mode writes mount 'onedrive': ~/onedrive";
+        conf = "nvim ~/.dotfiles/configuration.nix";
+        homeconf =  "nvim ~/.dotfiles/home.nix";
       };
       history = {
         size = 10000;
