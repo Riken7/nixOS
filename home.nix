@@ -30,12 +30,13 @@
 #  programs.nixvim = {
 #    enable = true;
 #  };
+#  programs.fastfetch.enable = true;
   programs.zsh = {
       enable = true;
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      
+      #initExtra = "fastfetch";
       shellAliases = {
         ll = "ls -l";
         update = "cd ~/.dotfiles ; sudo nixos-rebuild switch --flake .";
@@ -52,6 +53,7 @@
         enable = true;
         plugins = [ "git" "direnv"];
         theme = "robbyrussell";
+
       };
   };
 }

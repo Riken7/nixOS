@@ -140,8 +140,8 @@
   #};
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-  services.libinput.touchpad.naturalScrolling = true;
+#  services.libinput.enable = true;
+#  services.libinput.touchpad.naturalScrolling = true;
   # Defining power up command after suspend
   powerManagement.powerUpCommands = "sudo rmmod atkbd; sudo modprobe atkbd reset=1";
   # Define a user account. Don't forget to set a password with ‘passwd’.
