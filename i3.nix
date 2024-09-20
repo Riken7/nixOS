@@ -8,20 +8,21 @@
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
-        upower
-        alacritty
+        maim #screenshot tool
+        xfce.thunar #file manager
+        upower #power management
+        autotiling #auto tiling
+        alacritty #terminal
         rofi #application launche
         i3lock #default i3 screen locker
-        polybar
-        picom
-        feh
-        arandr
-        xclip
-        pulseaudio
+        polybar #status bar
+        picom #compositor
+        feh #wallpaper
+        arandr #screen layout
+        xclip #clipboard
+        pulseaudio 
         brightnessctl
-        xss-lock
-        networkmanager
-        networkmanagerapplet
+        xss-lock #screen locker
       ];
     };
   };

@@ -1,5 +1,6 @@
 {config , pkgs , ...}:
 {
+
 	home.username = "rik";
 	home.homeDirectory = "/home/rik";
 
@@ -54,7 +55,8 @@
       shellAliases = {
         ll = "ls -l";
         update = "cd ~/.dotfiles ; sudo nixos-rebuild switch --flake .";
-        open = "xdg-open";
+        #open = "xdg-open"; #gnome
+        open = "thunar"; #i3
         onedrive = "rclone --vfs-cache-mode writes mount 'onedrive': ~/onedrive";
         conf = "nvim ~/.dotfiles/configuration.nix";
         homeconf =  "nvim ~/.dotfiles/home.nix";
