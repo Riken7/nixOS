@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./i3.nix
 	 #including home-manager channel
     ];
   # Bootloader.
@@ -56,49 +57,26 @@
   #services.desktopManager.plasma6.enable = true;
 
   # Enable the GNOME DE
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  #exluding pre-installed apps
-	  environment.gnome.excludePackages = (with pkgs; [
-	  gnome-photos
-	  gnome-tour
-	  gnome-terminal
-	  epiphany
-	  geary
-	  evince # document viewer
-	  totem # video player
-	]) ++ (with pkgs.gnome; [
-	  gnome-music
-	  gnome-characters
-	  tali # poker game
-	  iagno # go game
-	  hitori # sudoku game
-	  atomix # puzzle game
-	]);
+#  services.xserver.displayManager.gdm.enable = true;
+#  services.xserver.desktopManager.gnome.enable = true;
+#  #exluding pre-installed apps
+#	  environment.gnome.excludePackages = (with pkgs; [
+#	  gnome-photos
+#	  gnome-tour
+#	  gnome-terminal
+#	  epiphany
+#	  geary
+#	  evince # document viewer
+#	  totem # video player
+#	]) ++ (with pkgs.gnome; [
+#	  gnome-music
+#	  gnome-characters
+#	  tali # poker game
+#	  iagno # go game
+#	  hitori # sudoku game
+#	  atomix # puzzle game
+#	]);
 # -- end --
-  # i3 setup
-#  environment.pathsToLink = [ "/libexec" ];
-#
-#  services.xserver = {
-#    enable = true;
-#
-#    desktopManager = {
-#      xterm.enable = false;  
-#    };
-#    displayManager = {
-#      defaultSession = "none+i3";
-#    };
-#    windowManager.i3 = {
-#      enable = true;
-#      extraPackages = with pkgs; [
-#        dmenu #application launcher most people use
-#        i3status # gives you the default i3 status bar
-#        i3lock #default i3 screen locker
-#        i3blocks #if you are planning on using i3blocks over i3status
-#     ];
-#    };
-#  };
-  # -- end --
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -116,12 +94,12 @@
          enable = true;
          package = pkgs.pulseaudioFull;
    };
-   hardware.bluetooth.settings = {
-         General = {
-           Experiment = true;
-           Enable = "Source,Sink,Media,Socket";
-         };
-   };
+#   hardware.bluetooth.settings = {
+#         General = {
+#           Experiment = true;
+#           Enable = "Source,Sink,Media,Socket";
+#         };
+#   };
 
   # Enable sound with pipewire.
   #hardware.pulseaudio.enable = false;
@@ -177,9 +155,6 @@
 	pkgs.home-manager
 	vim
 	pkgs.direnv
-	#pkgs.zed-editor
-	pkgs.gedit
-	pkgs.vscode-fhs
 	pkgs.jdk
 	#pkgs.discord
 	pkgs.brave
@@ -188,7 +163,6 @@
 	pkgs.microsoft-edge-dev
 	pkgs.postman
 	pkgs.nodejs_20	
-
 	#only use these packages with gnome
 	adwaita-icon-theme  
 	gnome-tweaks
@@ -226,16 +200,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
-	#adding home-manager packages here
-        #home-manager.users.rik = { pkgs , ... } : {
-	#	#home.packages = [pkgs.htop] OR
-        #       home.packages = with pkgs ; [htop ];
-	#	programs.bash.enable = true;
-	#	
-	#	home.stateVersion = "24.05";
-	#	
-        #};
-
 }
 

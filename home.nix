@@ -8,29 +8,43 @@
     stremio
     rclone
     awscli
-		htop
-    gnome-terminal
+		btop
     nix-index
     vscode-fhs
-  #i3 related pkgs ->
-    #rofi
-    #picom
-    #feh
-    #arandr
-
+    #gnome-terminal
+    ripgrep
+    python311
+    prettierd
+    black
+    isort
+    rustfmt
+    stylua
+    #linters
+    eslint_d
+    luajitPackages.luacheck
+    splint
+    checkstyle
+    python311Packages.flake8
 		#jetbrains.idea-community-src
-	];
+    #i3 ->
+];
 
 	home.stateVersion = "24.05";
 
 	programs.home-manager.enable = true;
 	programs.neovim = {
     enable = true;
+    extraPackages = with pkgs; [
+      jdt-language-server
+      lua-language-server
+      rust-analyzer
+      ccls
+      pyright
+      tailwindcss-language-server
+      typescript-language-server
+    ];
   };
-#  programs.nixvim = {
-#    enable = true;
-#  };
-#  programs.fastfetch.enable = true;
+
   programs.zsh = {
       enable = true;
       enableCompletion = true;
