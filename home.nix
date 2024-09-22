@@ -20,6 +20,7 @@
     isort
     rustfmt
     stylua
+    tailwindcss-language-server
     #linters
     eslint_d
     luajitPackages.luacheck
@@ -27,7 +28,6 @@
     checkstyle
     python311Packages.flake8
 		#jetbrains.idea-community-src
-    #i3 ->
 ];
 
 	home.stateVersion = "24.05";

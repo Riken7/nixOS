@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./i3.nix
+      #./suspend-and-hibernate.nix
 	 #including home-manager channel
     ];
   # Bootloader.
@@ -23,9 +24,11 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   #swapfile
   swapDevices = [{
-	device = "/swapfile";
-	size = 8*1024;
+  	device = "/swapfile";
+	  size = 8*1024;
   }];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  
   # Enable networking
   networking.networkmanager.enable = true;
   #enabling zsh for rik 
@@ -90,10 +93,10 @@
   # Bluetooth => setup bluetooth + enabled experimental features
    hardware.bluetooth.enable = true;
    hardware.bluetooth.powerOnBoot = true; #power up bt on boot
-   hardware.pulseaudio = {
-         enable = true;
-         package = pkgs.pulseaudioFull;
-   };
+  #hardware.pulseaudio = {
+  #       enable = true;
+  #       package = pkgs.pulseaudioFull;
+  # };
 #   hardware.bluetooth.settings = {
 #         General = {
 #           Experiment = true;
@@ -102,24 +105,24 @@
 #   };
 
   # Enable sound with pipewire.
-  #hardware.pulseaudio.enable = false;
-  #security.rtkit.enable = true;
-  #services.pipewire = {
-   # enable = true;
-    #alsa.enable = true;
-   # alsa.support32Bit = true;
-    #pulse.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
-  #};
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
-#  services.libinput.enable = true;
-#  services.libinput.touchpad.naturalScrolling = true;
+   services.libinput.enable = true;
+   services.libinput.touchpad.naturalScrolling = false;
   # Defining power up command after suspend
   powerManagement.powerUpCommands = "sudo rmmod atkbd; sudo modprobe atkbd reset=1";
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -163,10 +166,8 @@
 	pkgs.microsoft-edge-dev
 	pkgs.postman
 	pkgs.nodejs_20	
+  pavucontrol
 	#only use these packages with gnome
-	adwaita-icon-theme  
-	gnome-tweaks
-	
   ];
   #KdeConnect
   programs.kdeconnect = {

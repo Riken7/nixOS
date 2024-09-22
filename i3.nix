@@ -1,9 +1,9 @@
 {config , pkgs , ...}:
 {
+  services.displayManager.defaultSession = "none+i3";
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
-    displayManager.defaultSession = "none+i3";
 
     windowManager.i3 = {
       package = pkgs.i3-gaps;
@@ -20,7 +20,6 @@
         feh #wallpaper
         arandr #screen layout
         xclip #clipboard
-        pulseaudio 
         brightnessctl
         xss-lock #screen locker
       ];
