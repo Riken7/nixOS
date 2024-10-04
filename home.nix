@@ -5,7 +5,9 @@
 	home.homeDirectory = "/home/rik";
 
 	home.packages = with pkgs; [
+    ttyper
     tmux
+    xarchiver
     stremio
     rclone
     awscli
