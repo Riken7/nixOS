@@ -15,7 +15,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+  boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -121,8 +121,21 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-   services.libinput.enable = true;
-   services.libinput.touchpad.naturalScrolling = false;
+  services.xserver.libinput.enable = true;
+  
+  services.libinput.touchpad = {
+    #enable = true;
+    naturalScrolling = false;
+    tapping = true;
+    disableWhileTyping = false;
+    clickMethod = "clickfinger";
+    scrollMethod = "twofinger";
+    tapButtonMap = {
+      1 = 1
+      2 = 3
+    };
+  };
+
   # Defining power up command after suspend
   powerManagement.powerUpCommands = "sudo rmmod atkbd; sudo modprobe atkbd reset=1";
   # Define a user account. Don't forget to set a password with ‘passwd’.

@@ -5,9 +5,12 @@
 	home.homeDirectory = "/home/rik";
 
 	home.packages = with pkgs; [
+    vesktop
+    usermount #auto-mounting of usb drives
+    onlyoffice-bin
     ttyper
     tmux
-    xarchiver
+    file-roller
     stremio
     rclone
     awscli
