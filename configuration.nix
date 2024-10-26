@@ -28,7 +28,7 @@
 	  size = 8*1024;
   }];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  
+    
   # Enable networking
   networking.networkmanager.enable = true;
   #enabling zsh for rik 
@@ -51,6 +51,7 @@
     LC_TELEPHONE = "en_IN";
     LC_TIME = "en_IN";
   };
+   
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -121,20 +122,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-  
-  services.libinput.touchpad = {
-    #enable = true;
-    naturalScrolling = false;
-    tapping = true;
-    disableWhileTyping = false;
-    clickMethod = "clickfinger";
-    scrollMethod = "twofinger";
-    tapButtonMap = {
-      1 = 1
-      2 = 3
-    };
-  };
+  services.libinput.enable = true;
 
   # Defining power up command after suspend
   powerManagement.powerUpCommands = "sudo rmmod atkbd; sudo modprobe atkbd reset=1";
@@ -167,20 +155,18 @@
 	  data-root = "/home/rik/.docker_data";
 	};
   environment.systemPackages = with pkgs; [
-  pkgs.wl-clipboard
-	pkgs.home-manager
+  wl-clipboard
+	home-manager
 	vim
-	pkgs.direnv
-	pkgs.jdk
-	#pkgs.discord
-	pkgs.brave
-	pkgs.gh
-	pkgs.git
-	pkgs.microsoft-edge-dev
-	pkgs.postman
-	pkgs.nodejs_20	
+	direnv
+	jdk
+	brave
+	gh
+	git
+	microsoft-edge-dev
+	postman
+	nodejs_20	
   pavucontrol
-	#only use these packages with gnome
   ];
   #KdeConnect
   programs.kdeconnect = {
@@ -199,8 +185,9 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
+  #services.openssh.enable = true;
+  #services.openssh.permitRootLogin = "no";
+  #services.openssh.passwordAuthentication = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

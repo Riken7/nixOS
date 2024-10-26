@@ -5,7 +5,7 @@
 	home.homeDirectory = "/home/rik";
 
 	home.packages = with pkgs; [
-    vesktop
+    discord
     usermount #auto-mounting of usb drives
     onlyoffice-bin
     ttyper
@@ -25,13 +25,12 @@
     isort
     rustfmt
     stylua
-    tailwindcss-language-server
-    #linters
-    eslint_d
-    luajitPackages.luacheck
-    splint
-    checkstyle
-    python311Packages.flake8
+    ##linters
+    #eslint_d
+    #luajitPackages.luacheck
+    #splint
+    #checkstyle
+    #python311Packages.flake8
 		#jetbrains.idea-community-src
 ];
 
@@ -59,7 +58,7 @@
       #initExtra = "fastfetch";
       shellAliases = {
         ll = "ls -l";
-        update = "cd ~/.dotfiles ; sudo nixos-rebuild switch --flake .";
+        update = "cd ~/.dotfiles ; ./autocommit.sh";
         #open = "xdg-open"; #gnome
         open = "thunar"; #i3
         onedrive = "rclone --vfs-cache-mode writes mount 'onedrive': ~/onedrive";
