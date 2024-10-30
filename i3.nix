@@ -10,6 +10,7 @@
       extraPackages = with pkgs; [
         maim #screenshot tool
         libnotify #notifications
+        dunst #notification deamon
         xfce.thunar #file manager
         upower #power management
         autotiling #auto tiling
