@@ -123,6 +123,21 @@
                 },
                 "background": "#26BDBB",
                 "foreground": "#0C212F"
+              }
+            ]
+          },
+          {
+            "type": "prompt",
+            "alignment": "right",
+            "segments" : [
+              {
+                "type": "status",
+                "style": "diamond",
+                "leading_diamond": "<transparent,background>\ue0b0</>",
+                "trailing_diamond": "\ue0b0",
+                "template": "<transparent> \uf12a</> {{ reason .Code }} ",
+                "background": "#910000",
+                "foreground": "#ffffff"
               },
               {
                 "type": "git",
@@ -142,22 +157,12 @@
                 },
                 "background": "#280C2E",
                 "foreground": "#FFFFFF"
-              },
-              {
-                "type": "status",
-                "style": "diamond",
-                "leading_diamond": "<transparent,background>\ue0b0</>",
-                "trailing_diamond": "\ue0b0",
-                "template": "<transparent> \uf12a</> {{ reason .Code }} ",
-                "background": "#910000",
-                "foreground": "#ffffff"
               }
             ]
           }
         ]
       }
-    ''); 
+    '');  
+
     };
 }
-
-
