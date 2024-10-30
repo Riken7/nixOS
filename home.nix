@@ -17,6 +17,7 @@
 		btop
     nix-index
     vscode-fhs
+    oh-my-posh
     #gnome-terminal
     ripgrep
     python311
@@ -69,11 +70,94 @@
         size = 10000;
         path = "${config.xdg.dataHome}/zsh/history";
       };
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" "direnv"];
-        theme = "robbyrussell";
-
-      };
+      #oh-my-zsh = {
+        #enable = true;
+        #plugins = [ "git" "direnv"];
+        #theme = "robbyrussell";
+      #};
   };
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    #useTheme = "jblab_2021";
+    settings = builtins.fromJSON (builtins.unsafeDiscardStringContext ''
+      {
+        "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+        "version": 2,
+        "final_space": true,
+        "console_title_template": "{{if .Root}} ⚡ {{end}}{{.Folder | replace \"~\" \"🏠\"}} @ {{.HostName}}",
+        "blocks": [
+          {
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+              {
+                "type": "os",
+                "style": "diamond",
+                "leading_diamond": "\ue0b6",
+                "trailing_diamond": "\ue0b0",
+                "template": " {{ .Icon }} ",
+                "background": "#0C212F",
+                "foreground": "#FFFFFF"
+              },
+              {
+                "type": "root",
+                "style": "diamond",
+                "leading_diamond": "<transparent,#DE2121>\ue0b0</>",
+                "trailing_diamond": "\ue0b0",
+                "template": " \uf0e7 ",
+                "background": "#DE2121",
+                "foreground": "#FFFFFF"
+              },
+              {
+                "type": "path",
+                "style": "diamond",
+                "leading_diamond": "<transparent,#26BDBB>\ue0b0</>",
+                "trailing_diamond": "\ue0b0",
+                "template": " {{ .Path }} ",
+                "properties": {
+                  "folder_icon": "...",
+                  "folder_separator_icon": "<transparent> \ue0b1 </>",
+                  "home_icon": "\ueb06",
+                  "style": "agnoster_short"
+                },
+                "background": "#26BDBB",
+                "foreground": "#0C212F"
+              },
+              {
+                "type": "git",
+                "style": "powerline",
+                "powerline_symbol": "\ue0b0",
+                "background_templates": [
+                  "{{ if or (.Working.Changed) (.Staging.Changed) }}#7621DE{{ end }}",
+                  "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#7621DE{{ end }}",
+                  "{{ if gt .Ahead 0 }}#7621DE{{ end }}",
+                  "{{ if gt .Behind 0 }}#7621DE{{ end }}"
+                ],
+                "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+                "properties": {
+                  "fetch_stash_count": true,
+                  "fetch_status": true,
+                  "fetch_upstream_icon": true
+                },
+                "background": "#280C2E",
+                "foreground": "#FFFFFF"
+              },
+              {
+                "type": "status",
+                "style": "diamond",
+                "leading_diamond": "<transparent,background>\ue0b0</>",
+                "trailing_diamond": "\ue0b0",
+                "template": "<transparent> \uf12a</> {{ reason .Code }} ",
+                "background": "#910000",
+                "foreground": "#ffffff"
+              }
+            ]
+          }
+        ]
+      }
+    ''); 
+    };
 }
+
+
