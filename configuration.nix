@@ -28,7 +28,6 @@
 	  size = 8*1024;
   }];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-    
   # Enable networking
   networking.networkmanager.enable = true;
   #enabling zsh for rik 

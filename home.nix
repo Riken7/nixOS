@@ -3,8 +3,9 @@
 
 	home.username = "rik";
 	home.homeDirectory = "/home/rik";
-
+  
 	home.packages = with pkgs; [
+    clementine
     discord
     usermount #auto-mounting of usb drives
     onlyoffice-bin
