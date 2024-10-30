@@ -9,6 +9,7 @@
       package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
         maim #screenshot tool
+        libnotify #notifications
         xfce.thunar #file manager
         upower #power management
         autotiling #auto tiling
