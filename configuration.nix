@@ -15,7 +15,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
+  #boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -172,6 +172,7 @@
 	enable = true;
 	package = pkgs.gnomeExtensions.gsconnect;
 	};
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
