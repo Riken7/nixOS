@@ -86,6 +86,14 @@
     layout = "us";
     variant = "";
   };
+  services.libinput.touchpad = {
+    disableWhileTyping = true;
+    accelSpeed = "0.4";
+    tapping = true;
+    naturalScrolling = true;
+    middleEmulation = false;
+    tappingButtonMap = "lrm";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -130,10 +138,6 @@
     isNormalUser = true;
     description = "Riken";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  kdePackages.kate
-    #  thunderbird
-    ];
   };
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Install firefox.
@@ -166,6 +170,7 @@
 	postman
 	nodejs_20	
   pavucontrol
+  superfile
   ];
   #KdeConnect
   programs.kdeconnect = {

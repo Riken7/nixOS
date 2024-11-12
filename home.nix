@@ -20,7 +20,6 @@
     ripgrep
     python311
     rustc
-
     ##formatters
     prettierd
     black
@@ -34,7 +33,7 @@
     ccls
     jdt-language-server
     lua-language-server
-    rust-analyzer-unwrapped
+    rust-analyzer
     pyright
     tailwindcss-language-server
     typescript-language-server
@@ -47,7 +46,6 @@
     eslint_d
     cppcheck
   ];
-
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
@@ -55,7 +53,7 @@
     enable = true;
     extraPackages = with pkgs; [
       jdt-language-server
-      rustc
+      rust-analyzer
       lua-language-server
       pyright
       tailwindcss-language-server
@@ -68,6 +66,9 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    initExtra = ''
+      export EDITOR=nvim
+    '';
     shellAliases = {
       ll = "ls -l";
       update = "cd ~/.dotfiles ; ./autocommit.sh";
