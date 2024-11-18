@@ -6,20 +6,20 @@
   home.packages = with pkgs; [
     discord
     usermount # auto-mounting of usb drives
+    zenity
     onlyoffice-bin
     ttyper
     tmux
     file-roller
     stremio
     rclone
-    awscli
     btop
     nix-index
-    vscode-fhs
     oh-my-posh
     ripgrep
     python311
     rustc
+    bat
     ##formatters
     prettierd
     black
@@ -70,6 +70,7 @@
       export EDITOR=nvim
     '';
     shellAliases = {
+      cat ="bat";
       ll = "ls -l";
       update = "cd ~/.dotfiles ; ./autocommit.sh";
       nupdate = "cd ~/.dotfiles ; sudo nixos-rebuild switch --flake .";

@@ -90,7 +90,7 @@
     disableWhileTyping = true;
     accelSpeed = "0.4";
     tapping = true;
-    naturalScrolling = true;
+    naturalScrolling = false;
     middleEmulation = false;
     tappingButtonMap = "lrm";
   };
@@ -158,6 +158,7 @@
 	  data-root = "/home/rik/.docker_data";
 	};
   environment.systemPackages = with pkgs; [
+  libinput
   wl-clipboard
 	home-manager
 	vim
@@ -166,7 +167,7 @@
 	brave
 	gh
 	git
-	microsoft-edge-dev
+	microsoft-edge
 	postman
 	nodejs_20	
   pavucontrol
@@ -194,7 +195,7 @@
   #services.openssh.permitRootLogin = "no";
   #services.openssh.passwordAuthentication = true;
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+   networking.firewall.allowedTCPPorts = [ 3000 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
