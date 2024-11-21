@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "#0C212F",
+          "foreground": "#FFFFFF",
+          "leading_diamond": "",
+          "style": "diamond",
+          "template": " {{ .Icon }} ",
+          "trailing_diamond": "",
+          "type": "os"
+        },
+        {
+          "background": "#DE2121",
+          "foreground": "#FFFFFF",
+          "leading_diamond": "<transparent,#DE2121></>",
+          "style": "diamond",
+          "template": "  ",
+          "trailing_diamond": "",
+          "type": "root"
+        },
+        {
+          "background": "#26BDBB",
+          "foreground": "#0C212F",
+          "leading_diamond": "<transparent,#26BDBB></>",
+          "properties": {
+            "folder_icon": "...",
+            "folder_separator_icon": "<transparent>  </>",
+            "home_icon": "",
+            "style": "agnoster_short"
+          },
+          "style": "diamond",
+          "template": " {{ .Path }} ",
+          "trailing_diamond": "",
+          "type": "path"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "#910000",
+          "foreground": "#ffffff",
+          "leading_diamond": "<transparent,background></>",
+          "style": "diamond",
+          "template": "<transparent> </> {{ reason .Code }} ",
+          "trailing_diamond": "",
+          "type": "status"
+        },
+        {
+          "background": "#280C2E",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#7621DE{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#7621DE{{ end }}",
+            "{{ if gt .Ahead 0 }}#7621DE{{ end }}",
+            "{{ if gt .Behind 0 }}#7621DE{{ end }}"
+          ],
+          "foreground": "#FFFFFF",
+          "powerline_symbol": "",
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "powerline",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "console_title_template": "{{if .Root}} ⚡ {{end}}{{.Folder | replace \"~\" \"🏠\"}} @ {{.HostName}}",
+  "final_space": true,
+  "version": 2
+}

@@ -3,8 +3,10 @@
   services.displayManager.defaultSession = "none+i3";
   services.xserver = {
     enable = true;
-    windowManager.i3.enable = true;
-
+    windowManager.i3 = {
+      enable = true;
+      configFile = "/home/rik/.dotfiles/config/i3/config";
+    };
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
