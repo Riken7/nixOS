@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./i3.nix
       #./suspend-and-hibernate.nix
 	 #including home-manager channel
     ];
