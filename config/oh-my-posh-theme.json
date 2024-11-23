@@ -7,7 +7,7 @@
         {
           "background": "#0C212F",
           "foreground": "#FFFFFF",
-          "leading_diamond": "",
+          "leading_diamond": "<transparent,background></>",
           "style": "diamond",
           "template": " {{ .Icon }} ",
           "trailing_diamond": "",
@@ -55,10 +55,10 @@
         {
           "background": "#280C2E",
           "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#7621DE{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#7621DE{{ end }}",
-            "{{ if gt .Ahead 0 }}#7621DE{{ end }}",
-            "{{ if gt .Behind 0 }}#7621DE{{ end }}"
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#7b1391{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#7b1391{{ end }}",
+            "{{ if gt .Ahead 0 }}#7b1391{{ end }}",
+            "{{ if gt .Behind 0 }}#7b1391{{ end }}"
           ],
           "foreground": "#FFFFFF",
           "powerline_symbol": "",

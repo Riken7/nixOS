@@ -84,6 +84,8 @@
       onedrive = "rclone --vfs-cache-mode writes mount 'onedrive': ~/onedrive";
       conf = "nvim ~/.dotfiles/configuration.nix";
       homeconf = "nvim ~/.dotfiles/home.nix";
+      gst = "git status";
+      gp = "git push";
     };
     history = {
       size = 10000;

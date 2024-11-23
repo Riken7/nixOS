@@ -8,13 +8,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #./suspend-and-hibernate.nix
+      ./nvidia.nix
+      ./services/logind.nix
 	 #including home-manager channel
     ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  #boot.kernelParams = ["psmouse.synaptics_intertouch=0"];
+  boot.kernelParams = ["i2c_hid.power_save=0"];
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -26,7 +27,7 @@
   	device = "/swapfile";
 	  size = 8*1024;
   }];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
   # Enable networking
   networking.networkmanager.enable = true;
   #enabling zsh for rik 
@@ -52,7 +53,6 @@
    
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   #services.displayManager.sddm.enable = true;
@@ -95,7 +95,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = false;
 
   # Bluetooth => setup bluetooth + enabled experimental features
    hardware.bluetooth.enable = true;
@@ -157,6 +157,8 @@
 	  data-root = "/home/rik/.docker_data";
 	};
   environment.systemPackages = with pkgs; [
+  noto-fonts
+  noto-fonts-emoji
   libinput
   wl-clipboard
 	home-manager
@@ -173,12 +175,10 @@
   superfile
   ];
   #KdeConnect
-  programs.kdeconnect = {
-	enable = true;
-	package = pkgs.gnomeExtensions.gsconnect;
-	};
-
-
+  #programs.kdeconnect = {
+	#enable = true;
+	#package = pkgs.gnomeExtensions.gsconnect;
+	#};
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
