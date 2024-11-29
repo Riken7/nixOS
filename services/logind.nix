@@ -1,9 +1,9 @@
 {
   services.logind = {
-    powerKey = "lock";
+    powerKey = "suspend";
     powerKeyLongPress = "poweroff";
-    lidSwitch = "suspend-then-hibernate";
-    lidSwitchExternalPower = "ignore";
-    lidSwitchDocked = "suspend-then-hibernate";
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "suspend";
+    lidSwitchDocked = "suspend";
   };
 }

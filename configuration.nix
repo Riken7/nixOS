@@ -8,14 +8,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./nvidia.nix
+      #./nvidia.nix
       ./services/logind.nix
-	 #including home-manager channel
+      ./config/touchpad/touchpad_config.nix
     ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = ["i2c_hid.power_save=0"];
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -23,11 +22,13 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   #swapfile
-  swapDevices = [{
-  	device = "/swapfile";
-	  size = 8*1024;
-  }];
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
+  #swapDevices = [{
+  #	device = "/swapfile";
+  #}];
+  
+  #boot.kernelParams = [""];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.blacklistedKernelModules = [""];
   # Enable networking
   networking.networkmanager.enable = true;
   #enabling zsh for rik 
@@ -85,15 +86,16 @@
     layout = "us";
     variant = "";
   };
-  services.libinput.touchpad = {
-    disableWhileTyping = true;
-    accelSpeed = "0.4";
-    tapping = true;
-    naturalScrolling = false;
-    middleEmulation = false;
-    tappingButtonMap = "lrm";
-  };
 
+  services.libinput.enable = true;
+  #services.libinput.touchpad = {
+  #  disableWhileTyping = true;
+  #  accelSpeed = "0.4";
+  #  tapping = true;
+  #  naturalScrolling = false;
+  #  middleEmulation = false;
+  #  tappingButtonMap = "lrm";
+  #};
   # Enable CUPS to print documents.
   services.printing.enable = false;
 
@@ -128,7 +130,6 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
 
   # Defining power up command after suspend
   powerManagement.powerUpCommands = "sudo rmmod atkbd; sudo modprobe atkbd reset=1";
@@ -159,7 +160,6 @@
   environment.systemPackages = with pkgs; [
   noto-fonts
   noto-fonts-emoji
-  libinput
   wl-clipboard
 	home-manager
 	vim

@@ -4,6 +4,7 @@
   home.homeDirectory = "/home/rik";
 
   home.packages = with pkgs; [
+    anydesk
     discord
     usermount # auto-mounting of usb drives
     zenity
@@ -20,7 +21,6 @@
     python311
     rustc
     bat
-    oh-my-posh
     ##formatters
     prettierd
     black
@@ -68,14 +68,14 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initExtraFirst = ''
-          eval "$(oh-my-posh init zsh --config ~/.dotfiles/config/oh-my-posh-theme.json)"
+      eval "$(oh-my-posh init zsh --config ~/.dotfiles/config/oh-my-posh-theme.json)"
     '';
     initExtra = ''
       export EDITOR=nvim
       eval "$(direnv hook zsh)"
     '';
     shellAliases = {
-      cat ="bat";
+      cat = "bat";
       ll = "ls -l";
       update = "cd ~/.dotfiles ; ./autocommit.sh";
       nupdate = "cd ~/.dotfiles ; sudo nixos-rebuild switch --flake .";
