@@ -9,7 +9,7 @@
     MatchIsTouchpad "on"
     MatchDevicePath "/dev/input/event*"
     Driver "libinput"
-    Option "DisableWhileTyping" "true"
+    Option "DisableWhileTyping" "false"
     Option "AccelSpeed" "0.4"
     Option "Tapping" "true"
     Option "NaturalScrolling" "false"

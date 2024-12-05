@@ -4,6 +4,7 @@
   home.homeDirectory = "/home/rik";
 
   home.packages = with pkgs; [
+    kitty
     anydesk
     discord
     usermount # auto-mounting of usb drives
