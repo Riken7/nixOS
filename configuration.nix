@@ -4,14 +4,14 @@
 
 { config, pkgs, ... }:
 
-{  
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      #./nvidia.nix
-      ./services/logind.nix
-      ./config/touchpad/touchpad_config.nix
-    ];
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    #./nvidia.nix
+    ./services/logind.nix
+    ./config/touchpad/touchpad_config.nix
+  ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -25,8 +25,8 @@
   #swapDevices = [{
   #	device = "/swapfile";
   #}];
-  
-  boot.kernelParams = ["i2c_hid"];
+
+  boot.kernelParams = [ "i2c_hid" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.blacklistedKernelModules = [""];
   # Enable networking
@@ -51,7 +51,7 @@
     LC_TELEPHONE = "en_IN";
     LC_TIME = "en_IN";
   };
-   
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
 
@@ -60,26 +60,26 @@
   #services.desktopManager.plasma6.enable = true;
 
   # Enable the GNOME DE
-#  services.xserver.displayManager.gdm.enable = true;
-#  services.xserver.desktopManager.gnome.enable = true;
-#  #exluding pre-installed apps
-#	  environment.gnome.excludePackages = (with pkgs; [
-#	  gnome-photos
-#	  gnome-tour
-#	  gnome-terminal
-#	  epiphany
-#	  geary
-#	  evince # document viewer
-#	  totem # video player
-#	]) ++ (with pkgs.gnome; [
-#	  gnome-music
-#	  gnome-characters
-#	  tali # poker game
-#	  iagno # go game
-#	  hitori # sudoku game
-#	  atomix # puzzle game
-#	]);
-# -- end --
+  #  services.xserver.displayManager.gdm.enable = true;
+  #  services.xserver.desktopManager.gnome.enable = true;
+  #  #exluding pre-installed apps
+  #	  environment.gnome.excludePackages = (with pkgs; [
+  #	  gnome-photos
+  #	  gnome-tour
+  #	  gnome-terminal
+  #	  epiphany
+  #	  geary
+  #	  evince # document viewer
+  #	  totem # video player
+  #	]) ++ (with pkgs.gnome; [
+  #	  gnome-music
+  #	  gnome-characters
+  #	  tali # poker game
+  #	  iagno # go game
+  #	  hitori # sudoku game
+  #	  atomix # puzzle game
+  #	]);
+  # -- end --
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -100,18 +100,18 @@
   services.printing.enable = false;
 
   # Bluetooth => setup bluetooth + enabled experimental features
-   hardware.bluetooth.enable = true;
-   hardware.bluetooth.powerOnBoot = true; #power up bt on boot
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true; # power up bt on boot
   #hardware.pulseaudio = {
   #       enable = true;
   #       package = pkgs.pulseaudioFull;
   # };
-#   hardware.bluetooth.settings = {
-#         General = {
-#           Experiment = true;
-#           Enable = "Source,Sink,Media,Socket";
-#         };
-#   };
+  #   hardware.bluetooth.settings = {
+  #         General = {
+  #           Experiment = true;
+  #           Enable = "Source,Sink,Media,Socket";
+  #         };
+  #   };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -137,9 +137,15 @@
   users.users.rik = {
     isNormalUser = true;
     description = "Riken";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -149,36 +155,35 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   #docker 
-	virtualisation.docker.rootless = {
-	  enable = true;
-	  setSocketVariable = true ;
-	};  
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
   #setting up root directory for docker data
-	virtualisation.docker.daemon.settings = {
-	  data-root = "/home/rik/.docker_data";
-	};
+  virtualisation.docker.daemon.settings = {
+    data-root = "/home/rik/.docker_data";
+  };
   environment.systemPackages = with pkgs; [
-  noto-fonts
-  noto-fonts-emoji
-  wl-clipboard
-	home-manager
-	vim
-	direnv
-	jdk
-	brave
-	gh
-	git
-	microsoft-edge
-	postman
-	nodejs_20	
-  pavucontrol
-  superfile
+
+
+    wl-clipboard
+    home-manager
+    vim
+    direnv
+    jdk
+    brave
+    gh
+    git
+    microsoft-edge
+    postman
+    nodejs_20
+    pavucontrol
+    superfile
   ];
   #KdeConnect
   #programs.kdeconnect = {
-	#enable = true;
-	#package = pkgs.gnomeExtensions.gsconnect;
-	#};
+  #  enable = true;
+  #};
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -194,7 +199,6 @@
   #services.openssh.permitRootLogin = "no";
   #services.openssh.passwordAuthentication = true;
   # Open ports in the firewall.
-   networking.firewall.allowedTCPPorts = [ 3000 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -207,4 +211,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 }
-

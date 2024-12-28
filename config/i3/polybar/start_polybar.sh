@@ -2,4 +2,4 @@
 pkill polybar
 
 # Launch Polybar
-polybar example &  # Replace 'example' with your bar name if different
+polybar --config=$HOME/.dotfiles/config/i3/polybar/config.ini example & 

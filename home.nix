@@ -4,11 +4,19 @@
   home.homeDirectory = "/home/rik";
 
   home.packages = with pkgs; [
+    obs-studio
+    obs-studio-plugins.input-overlay
     kitty
-    anydesk
+    screenkey
+    davinci-resolve
+
+    gimp
+    
+    zenity ##
+    jq
+
     discord
     usermount # auto-mounting of usb drives
-    zenity
     onlyoffice-bin
     ttyper
     tmux
@@ -74,6 +82,7 @@
     initExtra = ''
       export EDITOR=nvim
       eval "$(direnv hook zsh)"
+      export GTK_THEME=WhiteSur:dark
     '';
     shellAliases = {
       cat = "bat";
