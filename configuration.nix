@@ -26,9 +26,7 @@
   #	device = "/swapfile";
   #}];
 
-  boot.kernelParams = [ "i2c_hid" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  #boot.blacklistedKernelModules = [""];
   # Enable networking
   networking.networkmanager.enable = true;
   #enabling zsh for rik 

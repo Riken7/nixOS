@@ -10,9 +10,7 @@
     screenkey
     davinci-resolve
 
-    gimp
-    
-    zenity ##
+    zenity
     jq
 
     discord
@@ -55,6 +53,9 @@
     pylint
     eslint_d
     cppcheck
+
+    alacritty
+    rofi
   ];
   home.stateVersion = "24.05";
 
