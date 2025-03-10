@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     #./nvidia.nix
     ./services/logind.nix
-    ./config/touchpad/touchpad_config.nix
+    #./config/touchpad/touchpad_config.nix
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -27,6 +27,7 @@
   #}];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.blacklistedKernelModules = [ "psmouse" "i2c_hid_acpi" ];
   # Enable networking
   networking.networkmanager.enable = true;
   #enabling zsh for rik 
@@ -86,14 +87,14 @@
   };
 
   services.libinput.enable = true;
-  #services.libinput.touchpad = {
-  #  disableWhileTyping = true;
-  #  accelSpeed = "0.4";
-  #  tapping = true;
-  #  naturalScrolling = false;
-  #  middleEmulation = false;
-  #  tappingButtonMap = "lrm";
-  #};
+  services.libinput.touchpad = {
+    disableWhileTyping = true;
+    accelSpeed = "0.4";
+    tapping = false;
+    naturalScrolling = false;
+    middleEmulation = false;
+    tappingButtonMap = "lrm";
+  };
   # Enable CUPS to print documents.
   services.printing.enable = false;
 
@@ -163,12 +164,16 @@
   };
   environment.systemPackages = with pkgs; [
 
+    chromium
+    i2c-tools
 
     wl-clipboard
     home-manager
     vim
     direnv
     jdk
+    gcc
+    nasm
     brave
     gh
     git
@@ -177,6 +182,7 @@
     nodejs_20
     pavucontrol
     superfile
+    appimage-run
   ];
   #KdeConnect
   #programs.kdeconnect = {
@@ -208,4 +214,12 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+  programs.nix-ld.enable = true;
+
+  programs.fuse.userAllowOther = true;
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 }

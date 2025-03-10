@@ -35,7 +35,6 @@ smart_borders on
 # Start rofi
 #bindsym $mod+d exec --no-startup-id rofi -show run 
 bindsym $mod+d exec --no-startup-id ~/.dotfiles/config/i3/rofi/bin/launcher
-bindsym Print exec --no-startup-id ~/.dotfiles/config/i3/rofi/bin/screenshot
 
 # Border in windows / Disable TitleBar
 for_window [class="^.*"] border pixel 2
@@ -247,6 +246,8 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id ~/.dotfiles/config/i3/polybar/start_polybar.sh
 bindsym $mod+shift+x exec i3lock && systemctl suspend
 
+#screenshot
+bindsym Print exec flameshot gui -d 1000
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 

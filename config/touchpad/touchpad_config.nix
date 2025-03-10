@@ -11,7 +11,7 @@
     Driver "libinput"
     Option "DisableWhileTyping" "false"
     Option "AccelSpeed" "0.4"
-    Option "Tapping" "true"
+    Option "Tapping" "false"
     Option "NaturalScrolling" "false"
     Option "MiddleEmulation" "false"
     Option "TappingButtonMap" "lrm"

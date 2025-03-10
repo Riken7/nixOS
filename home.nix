@@ -6,9 +6,12 @@
   home.packages = with pkgs; [
     obs-studio
     obs-studio-plugins.input-overlay
+    figma-linux
     kitty
     screenkey
     davinci-resolve
+    xcape
+    flameshot
 
     zenity
     jq
@@ -38,6 +41,7 @@
     google-java-format
     clang-tools
     ##lsps
+    vscode-langservers-extracted
     ccls
     jdt-language-server
     lua-language-server
@@ -47,7 +51,7 @@
     typescript-language-server
     nixd
     ##linters
-    #clippy
+    ktlint
     luajitPackages.luacheck
     checkstyle
     pylint
@@ -90,6 +94,7 @@
       ll = "ls -l";
       update = "cd ~/.dotfiles ; ./autocommit.sh";
       nupdate = "cd ~/.dotfiles ; sudo nixos-rebuild switch --flake .";
+      fixit = "sudo modprobe -r i2c_hid_acpi && sudo modprobe i2c_hid_acpi";
       #open = "xdg-open"; #gnome
       open = "thunar"; # i3
       onedrive = "rclone --vfs-cache-mode writes mount 'onedrive': ~/onedrive";
