@@ -1,0 +1,15 @@
+gtk-titlebar = false
+
+font-family = JetBrainsMono NerdFont
+font-size = 14
+
+background-opacity = 0.9
+
+cursor-style = block
+cursor-style-blink = true
+shell-integration-features = no-cursor
+
+clipboard-read = allow
+clipboard-write = allow
+
+theme = GruvboxDark

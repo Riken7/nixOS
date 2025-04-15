@@ -27,7 +27,10 @@
   #}];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.blacklistedKernelModules = [ "psmouse" "i2c_hid_acpi" ];
+  boot.blacklistedKernelModules = [
+    "psmouse"
+    "i2c_hid_acpi"
+  ];
   # Enable networking
   networking.networkmanager.enable = true;
   #enabling zsh for rik 
@@ -164,8 +167,11 @@
   };
   environment.systemPackages = with pkgs; [
 
+    prisma-engines
     chromium
     i2c-tools
+
+    android-studio
 
     wl-clipboard
     home-manager
@@ -179,11 +185,24 @@
     git
     microsoft-edge
     postman
-    nodejs_20
     pavucontrol
     superfile
     appimage-run
+
+    bun
+
+    #npm 
+    pnpm
+    nodePackages_latest.pnpm
+    nodePackages_latest.vercel
+    nodePackages_latest.prisma
+    openssl
+    nodejs_23
+    postgresql_17
   ];
+  environment.variables.PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+  environment.variables.PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+  environment.variables.PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
   #KdeConnect
   #programs.kdeconnect = {
   #  enable = true;

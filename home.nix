@@ -26,7 +26,10 @@
     rclone
     btop
     nix-index
-    oh-my-posh
+
+    #oh-my-posh
+    starship
+
     ripgrep
     python311
     rustc
@@ -76,18 +79,27 @@
       nixd
     ];
   };
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    initExtraFirst = ''
-      eval "$(oh-my-posh init zsh --config ~/.dotfiles/config/oh-my-posh-theme.json)"
-    '';
+    #initExtraFirst = ''
+    #  eval "$(oh-my-posh init zsh --config ~/.dotfiles/config/oh-my-posh-theme.json)"
+    #'';
     initExtra = ''
       export EDITOR=nvim
       eval "$(direnv hook zsh)"
       export GTK_THEME=WhiteSur:dark
+      export STARSHIP_CONFIG="$HOME/.dotfiles/config/starship.toml"
     '';
     shellAliases = {
       cat = "bat";
