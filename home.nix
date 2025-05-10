@@ -12,6 +12,7 @@
     davinci-resolve
     xcape
     flameshot
+    php
 
     zenity
     jq

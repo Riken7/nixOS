@@ -188,11 +188,12 @@
     pavucontrol
     superfile
     appimage-run
+    mysql84
+    mysql-workbench
 
     bun
 
     #npm 
-    pnpm
     nodePackages_latest.pnpm
     nodePackages_latest.vercel
     nodePackages_latest.prisma
@@ -203,6 +204,8 @@
   environment.variables.PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
   environment.variables.PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
   environment.variables.PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mysql84;
   #KdeConnect
   #programs.kdeconnect = {
   #  enable = true;
