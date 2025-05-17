@@ -13,6 +13,9 @@
     xcape
     flameshot
     php
+    gparted
+
+    dysk #df alternative
 
     zenity
     jq
