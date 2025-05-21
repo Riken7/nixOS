@@ -64,6 +64,7 @@
     pylint
     eslint_d
     cppcheck
+    lazygit
 
     alacritty
     rofi
