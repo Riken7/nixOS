@@ -10,7 +10,6 @@
     figma-linux
     kitty
     screenkey
-    davinci-resolve
     xcape
     flameshot
     php
@@ -101,7 +100,7 @@
     #initExtraFirst = ''
     #  eval "$(oh-my-posh init zsh --config ~/.dotfiles/config/oh-my-posh-theme.json)"
     #'';
-    initExtra = ''
+    initContent = ''
       export EDITOR=nvim
       eval "$(direnv hook zsh)"
       export GTK_THEME=WhiteSur:dark

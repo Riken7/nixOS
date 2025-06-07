@@ -116,7 +116,7 @@
   #   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -171,7 +171,6 @@
     chromium
     i2c-tools
 
-    android-studio
 
     wl-clipboard
     home-manager
@@ -183,7 +182,6 @@
     brave
     gh
     git
-    microsoft-edge
     postman
     pavucontrol
     superfile
@@ -198,7 +196,7 @@
     nodePackages_latest.vercel
     nodePackages_latest.prisma
     openssl
-    nodejs_23
+    nodejs_24
     postgresql_17
   ];
   environment.variables.PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
