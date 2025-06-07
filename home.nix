@@ -4,6 +4,7 @@
   home.homeDirectory = "/home/rik";
 
   home.packages = with pkgs; [
+    fastfetch
     obs-studio
     obs-studio-plugins.input-overlay
     figma-linux
@@ -15,7 +16,7 @@
     php
     gparted
 
-    dysk #df alternative
+    dysk # df alternative
 
     zenity
     jq
