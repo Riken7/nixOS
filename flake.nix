@@ -10,14 +10,22 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+    };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       ghostty,
+      quickshell,
+      hyprland,
       ...
     }@inputs:
     let
@@ -26,11 +34,15 @@
     {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           system = "X86_64-linux";
           modules = [
             ./configuration.nix
-            #./hyprland.nix
-            ./i3.nix
+            (import ./hyprland.nix {
+              hyprland = hyprland;
+              pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            })
+            #./i3.nix
             #home-manager setup ==>
             home-manager.nixosModules.home-manager
             {
@@ -42,7 +54,11 @@
             {
               environment.systemPackages = [
                 ghostty.packages.x86_64-linux.default
+                quickshell.packages.x86_64-linux.default
               ];
+            }
+            {
+
             }
           ];
         };

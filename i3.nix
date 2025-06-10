@@ -2,6 +2,7 @@
 {
   services.xserver.enable = true;
   services.xserver = {
+    displayManager.lightdm.enable = true;
     windowManager.i3 = {
       enable = true;
       configFile = "/home/rik/.dotfiles/config/i3/config";
@@ -9,7 +10,6 @@
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
-        maim # screenshot tool
         libnotify # notifications
         dunst # notification deamon
         xfce.thunar # file manager
@@ -17,7 +17,7 @@
         autotiling # auto tiling
         alacritty # terminal
         rofi # application launche
-        i3lock # default i3 screen locker
+        i3lock-color
         polybar # status bar
         picom # compositor
         feh # wallpaper

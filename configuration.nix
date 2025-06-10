@@ -6,10 +6,12 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     #./nvidia.nix
     ./services/logind.nix
+    ./services/greetd.nix
+    ./services/powerManagement.nix
+    ./modules/filemanager.nix
     #./config/touchpad/touchpad_config.nix
   ];
   # Bootloader.
@@ -53,36 +55,6 @@
     LC_TELEPHONE = "en_IN";
     LC_TIME = "en_IN";
   };
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-
-  # Enable the KDE Plasma Desktop Environment.
-  #services.displayManager.sddm.enable = true;
-  #services.desktopManager.plasma6.enable = true;
-
-  # Enable the GNOME DE
-  #  services.xserver.displayManager.gdm.enable = true;
-  #  services.xserver.desktopManager.gnome.enable = true;
-  #  #exluding pre-installed apps
-  #	  environment.gnome.excludePackages = (with pkgs; [
-  #	  gnome-photos
-  #	  gnome-tour
-  #	  gnome-terminal
-  #	  epiphany
-  #	  geary
-  #	  evince # document viewer
-  #	  totem # video player
-  #	]) ++ (with pkgs.gnome; [
-  #	  gnome-music
-  #	  gnome-characters
-  #	  tali # poker game
-  #	  iagno # go game
-  #	  hitori # sudoku game
-  #	  atomix # puzzle game
-  #	]);
-  # -- end --
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -130,9 +102,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-
   # Defining power up command after suspend
   powerManagement.powerUpCommands = "sudo rmmod atkbd; sudo modprobe atkbd reset=1";
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -154,8 +123,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   #docker 
   virtualisation.docker.rootless = {
     enable = true;
@@ -166,12 +133,11 @@
     data-root = "/home/rik/.docker_data";
   };
   environment.systemPackages = with pkgs; [
-
     prisma-engines
     chromium
-    i2c-tools
+    nerd-fonts.jetbrains-mono
 
-
+    greetd.tuigreet
     wl-clipboard
     home-manager
     vim
@@ -204,17 +170,6 @@
   environment.variables.PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
   services.mysql.enable = true;
   services.mysql.package = pkgs.mysql84;
-  #KdeConnect
-  #programs.kdeconnect = {
-  #  enable = true;
-  #};
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 
@@ -227,12 +182,6 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
   programs.nix-ld.enable = true;
 

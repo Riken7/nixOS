@@ -13,15 +13,13 @@
     xcape
     flameshot
     php
-    gparted
 
     dysk # df alternative
 
     zenity
     jq
 
-    discord
-    usermount # auto-mounting of usb drives
+    vesktop
     onlyoffice-bin
     ttyper
     tmux
@@ -67,7 +65,24 @@
     lazygit
 
     alacritty
+    curl
+
+    #hyprland pkg
+    greetd.tuigreet
+    fish
+    python313Packages.aubio
+    python313Packages.pyaudio
+    python313Packages.numpy
+    cava
+    bluez-tools
+    ddcutil
+    imagemagick
+    brightnessctl
+    ibm-plex
+    material-symbols
+    fd
     rofi
+
   ];
   home.stateVersion = "24.05";
 
