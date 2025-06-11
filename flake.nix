@@ -17,6 +17,9 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
   };
 
   outputs =
@@ -24,8 +27,8 @@
       nixpkgs,
       home-manager,
       ghostty,
+      nix-flatpak,
       quickshell,
-      hyprland,
       ...
     }@inputs:
     let
@@ -35,19 +38,18 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          system = "X86_64-linux";
+          system = "x86_64-linux";
           modules = [
             ./configuration.nix
-            (import ./hyprland.nix {
-              hyprland = hyprland;
-              pkgs = nixpkgs.legacyPackages.x86_64-linux;
-            })
+            ./hyprland.nix
+            nix-flatpak.nixosModules.nix-flatpak
             #./i3.nix
             #home-manager setup ==>
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              #home-manager.extraSpecialArgs = { inherit inputs; };
 
               home-manager.users.rik = import ./home.nix;
             }

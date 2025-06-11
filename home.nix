@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs,lib, ... }:
 {
+#  imports = [
+#    ./quickshell
+#  ];
   home.username = "rik";
   home.homeDirectory = "/home/rik";
 
@@ -9,10 +12,9 @@
     obs-studio-plugins.input-overlay
     figma-linux
     kitty
+    alacritty
+
     screenkey
-    xcape
-    flameshot
-    php
 
     dysk # df alternative
 
@@ -20,7 +22,6 @@
     jq
 
     vesktop
-    onlyoffice-bin
     ttyper
     tmux
     file-roller
@@ -64,25 +65,7 @@
     cppcheck
     lazygit
 
-    alacritty
     curl
-
-    #hyprland pkg
-    greetd.tuigreet
-    fish
-    python313Packages.aubio
-    python313Packages.pyaudio
-    python313Packages.numpy
-    cava
-    bluez-tools
-    ddcutil
-    imagemagick
-    brightnessctl
-    ibm-plex
-    material-symbols
-    fd
-    rofi
-
   ];
   home.stateVersion = "24.05";
 
