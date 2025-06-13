@@ -8,12 +8,13 @@
     ./system
     ./modules/filemanager.nix
     ./config/touchpad/touchpad_config.nix
-    ./scripts/screenshotin.nix
+    #./scripts/screenshotin.nix
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "nixos"; # Define your hostname.
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   fonts = {
     enableDefaultPackages = true;
@@ -68,8 +69,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.blacklistedKernelModules = [
-    "psmouse"
-    "i2c_hid_acpi"
     "nouveau"
   ];
   networking.networkmanager.enable = true;
@@ -110,7 +109,7 @@
     pulse.enable = true;
   };
   # Defining power up command after suspend
-  powerManagement.powerUpCommands = "sudo rmmod atkbd; sudo modprobe atkbd reset=1";
+  #powerManagement.powerUpCommands = "sudo rmmod atkbd; sudo modprobe atkbd reset=1";
   users.users.rik = {
     isNormalUser = true;
     description = "Riken";

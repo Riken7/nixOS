@@ -1,13 +1,21 @@
-{ config, pkgs, inputs,lib, ... }:
 {
-#  imports = [
-#    ./quickshell
-#  ];
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
+{
+  #  imports = [
+  #    ./quickshell
+  #  ];
   home.username = "rik";
   home.homeDirectory = "/home/rik";
 
   home.packages = with pkgs; [
+    youtube-music
     fastfetch
+    killall
     obs-studio
     obs-studio-plugins.input-overlay
     figma-linux
