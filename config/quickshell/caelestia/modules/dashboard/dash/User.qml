@@ -68,7 +68,7 @@ Row {
                 property string uptime
 
                 running: true
-                command: ["uptime", "-p"]
+                command: ["/bin/sh", "-c", "uptime | awk -F'up |,|user' '{gsub(/^ +| +$/, \"\", $2); print $2}'"]
                 stdout: SplitParser {
                     onRead: data => uptimeProc.uptime = data
                 }

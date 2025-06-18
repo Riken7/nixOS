@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -29,6 +34,8 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   environment.systemPackages = with pkgs; [
+    sops
+    sshfs
     alacritty
     prisma-engines
     chromium
@@ -60,6 +67,9 @@
     openssl
     nodejs_24
     postgresql_17
+
+    #themes
+    whitesur-icon-theme
   ];
   environment.variables.PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
   environment.variables.PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
@@ -155,4 +165,13 @@
     enable = true;
     binfmt = true;
   };
+
+
+#  sops = {
+#    age.keyFile = "/home/rik/.config/sops/age/keys.txt";
+#  };
+#  sops.secrets.address = {
+#    sopsFile = "./secrets/secrets.yaml";
+#    owner = "rik";
+#  };
 }

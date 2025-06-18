@@ -2,13 +2,13 @@
   config,
   pkgs,
   inputs,
-  lib,
   ...
 }:
 {
-  #  imports = [
-  #    ./quickshell
-  #  ];
+  imports = [
+    #./quickshell
+    #inputs.zen-nebula.homeModules.default
+  ];
   home.username = "rik";
   home.homeDirectory = "/home/rik";
 
@@ -28,7 +28,9 @@
 
     zenity
     jq
+    lm_sensors
 
+    discord
     vesktop
     ttyper
     tmux
@@ -74,6 +76,10 @@
     lazygit
 
     curl
+    gtk3
+    
+
+    #inputs.zen-browser.packages.${system}.default
   ];
   home.stateVersion = "24.05";
 
@@ -109,7 +115,6 @@
     initContent = ''
       export EDITOR=nvim
       eval "$(direnv hook zsh)"
-      export GTK_THEME=WhiteSur:dark
       export STARSHIP_CONFIG="$HOME/.dotfiles/config/starship.toml"
     '';
     shellAliases = {

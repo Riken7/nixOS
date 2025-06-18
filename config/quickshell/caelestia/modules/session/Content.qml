@@ -23,7 +23,9 @@ Column {
         id: logout
 
         icon: "logout"
-        command: ["sh", "-c", "uwsm stop || loginctl terminate-session $XDG_SESSION_ID"]
+        command: ["hyprlock"]
+        //command: ["sh", "-c", "(uwsm stop | grep -q 'Compositor is not running' && loginctl terminate-user $USER) || uwsm stop"]
+
 
         KeyNavigation.down: shutdown
 
@@ -63,7 +65,8 @@ Column {
         id: hibernate
 
         icon: "downloading"
-        command: ["systemctl", "hibernate"]
+        //command: ["systemctl", "hibernate"]
+        command: []
 
         KeyNavigation.up: shutdown
         KeyNavigation.down: reboot

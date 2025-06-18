@@ -20,6 +20,15 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    #zen-browser = {
+    #  url = "github:0xc000022070/zen-browser-flake";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+    #zen-nebula.url = "github:JustAdumbPrsn/Nebula-A-Minimal-Theme-for-Zen-Browser";
   };
 
   outputs =
@@ -29,10 +38,12 @@
       ghostty,
       nix-flatpak,
       quickshell,
+      sops-nix,
       ...
     }@inputs:
     let
       lib = nixpkgs.lib;
+      system =  "x86_64-linux";
     in
     {
       nixosConfigurations = {
@@ -40,6 +51,7 @@
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
           modules = [
+          sops-nix.nixosModules.sops
             ./configuration.nix
             ./hyprland.nix
             nix-flatpak.nixosModules.nix-flatpak
@@ -49,14 +61,14 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux"; };
 
               home-manager.users.rik = import ./home.nix;
             }
             {
               environment.systemPackages = [
-                ghostty.packages.x86_64-linux.default
-                quickshell.packages.x86_64-linux.default
+                ghostty.packages.${system}.default
+                quickshell.packages.${system}.default
               ];
             }
             {

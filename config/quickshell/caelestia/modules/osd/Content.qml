@@ -31,6 +31,21 @@ Column {
         implicitWidth: OsdConfig.sizes.sliderWidth
         implicitHeight: OsdConfig.sizes.sliderHeight
     }
+    VerticalSlider {
+    icon: {
+        if (Audio.micMuted || Audio.micVolume <= 0 || Audio.mic)
+            return "mic_off";
+        if (value)
+            return "mic";
+        return "mic_off";
+    }
+    value: Audio.micVolume
+    onMoved: Audio.setMicVolume(value)
+
+    implicitWidth: OsdConfig.sizes.sliderWidth
+    implicitHeight: OsdConfig.sizes.sliderHeight
+}
+
 
     VerticalSlider {
         icon: `brightness_${(Math.round(value * 6) + 1)}`

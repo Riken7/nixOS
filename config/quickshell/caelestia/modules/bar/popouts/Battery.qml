@@ -226,14 +226,14 @@ StyledText {
         implicitWidth: icon.implicitHeight + Appearance.padding.small * 2
         implicitHeight: icon.implicitHeight + Appearance.padding.small * 2
 
-        StateLayer {
-            radius: Appearance.rounding.full
-            color: profiles.current === parent.icon ? Colours.palette.m3onPrimary : Colours.palette.m3onSurface
+        //StateLayer {
+        //    radius: Appearance.rounding.full
+        //    color: profiles.current === parent.icon ? Colours.palette.m3onPrimary : Colours.palette.m3onSurface
 
-            function onClicked(): void {
-                PowerProfiles.profile = parent.profile;
-            }
-        }
+        //    function onClicked(): void {
+        //        PowerProfiles.profile = parent.profile;
+        //    }
+        //}
 
         MaterialIcon {
             id: icon

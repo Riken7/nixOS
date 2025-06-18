@@ -11,6 +11,7 @@ Singleton {
 
     readonly property string currentNamePath: `${Paths.state}/wallpaper/last.txt`.slice(7)
     readonly property string path: `${Paths.pictures}/Wallpapers`.slice(7)
+    readonly property list<string> extensions: ["jpg", "jpeg", "png", "webp", "tif", "tiff"]
 
     readonly property list<Wallpaper> list: wallpapers.instances
     property bool showPreview: false
@@ -59,7 +60,8 @@ Singleton {
         }
 
         function set(path: string): void {
-            root.setWallpaper('${Paths.pictures}/Wallpapers/solo2.jpg');
+            //root.setWallpaper('${Paths.pictures}/Wallpapers/');
+            root.setWallpaper(path);
         }
 
         function list(): string {
@@ -77,7 +79,8 @@ Singleton {
     Process {
         id: getPreviewColoursProc
 
-        command: ["caelestia", "scheme", "print", root.previewPath]
+        //command: ["caelestia", "scheme", "print", root.previewPath]
+        command: ["fish", "/home/rik/.local/bin/caelestia", "scheme", "print", root.previewPath]
         stdout: SplitParser {
             splitMarker: ""
             onRead: data => {
@@ -92,7 +95,8 @@ Singleton {
 
         property string path
 
-        command: ["caelestia", "wallpaper", "-f", path]
+        //command: ["caelestia", "wallpaper", "-f", path]
+        command: ["fish", "/home/rik/.local/bin/caelestia", "wallpaper", "-f", path]
     }
 
     Process {
