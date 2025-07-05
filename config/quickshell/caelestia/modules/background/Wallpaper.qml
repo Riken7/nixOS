@@ -8,7 +8,7 @@ import QtQuick
 Item {
     id: root
 
-    property url source: Wallpapers.current ? `file://${Wallpapers.current}` : `file:///home/tim/Pictures/Wallpapers/911_front.jpg`
+    property url source: Wallpapers.current ? `file://${Wallpapers.current}` : `file:///home/rik/Pictures/Wallpapers/911-x0-gt3.jpg`
     property Image current: one
 
     anchors.fill: parent

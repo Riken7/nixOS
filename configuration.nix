@@ -12,7 +12,7 @@
     ./services
     ./system
     ./modules/filemanager.nix
-    ./config/touchpad/touchpad_config.nix
+    #./config/touchpad/touchpad_config.nix
     #./scripts/screenshotin.nix
   ];
   # Bootloader.
@@ -34,6 +34,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   environment.systemPackages = with pkgs; [
+    firefox
     sops
     sshfs
     alacritty
@@ -78,9 +79,16 @@
   #services.mysql.package = pkgs.mysql84;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "i2c_hid" "i2c_hid_acpi"];
+
   boot.blacklistedKernelModules = [
     "nouveau"
   ];
+  boot.kernelParams = [
+    "acpi.power_nocheck=1"
+    "acpi_osi=linux"
+  ];
+
   networking.networkmanager.enable = true;
   programs.zsh.enable = true;
   users.users.rik.shell = pkgs.zsh;
@@ -132,7 +140,6 @@
     "nix-command"
     "flakes"
   ];
-  programs.firefox.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -155,6 +162,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [ 4389 ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
   programs.nix-ld.enable = true;
