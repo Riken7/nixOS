@@ -22,7 +22,6 @@
     ibm-plex
     material-symbols
     fd
-    rofi
     hyprshot
   ];
 

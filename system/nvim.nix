@@ -1,0 +1,49 @@
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  programs.neovim = {
+    enable = true;
+    extraPackages = with pkgs; [
+      jdt-language-server
+      rust-analyzer
+      lua-language-server
+      pyright
+      tailwindcss-language-server
+      typescript-language-server
+      nixd
+    ];
+  };
+  home.packages = with pkgs; [
+    ##formatters
+    prettierd
+    black
+    isort
+    rustfmt
+    luaformatter
+    nixfmt-rfc-style
+    google-java-format
+    clang-tools
+    ##lsps
+    vscode-langservers-extracted
+    ccls
+    jdt-language-server
+    lua-language-server
+    rust-analyzer
+    pyright
+    tailwindcss-language-server
+    typescript-language-server
+    nixd
+    ##linters
+    ktlint
+    luajitPackages.luacheck
+    checkstyle
+    pylint
+    eslint_d
+    cppcheck
+    lazygit
+  ];
+}
