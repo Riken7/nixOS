@@ -13,7 +13,7 @@
     ./system
     ./modules/filemanager.nix
     #./config/touchpad/touchpad_config.nix
-    #./scripts/screenshotin.nix
+    ./scripts
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
