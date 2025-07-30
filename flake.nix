@@ -44,6 +44,7 @@
     let
       lib = nixpkgs.lib;
       system =  "x86_64-linux";
+      #shellFlake = builtins.getFlake ./config/shell;
     in
     {
       nixosConfigurations = {
@@ -69,6 +70,7 @@
               environment.systemPackages = [
                 ghostty.packages.${system}.default
                 quickshell.packages.${system}.default
+                #shellFlake.packages.${system}.caelestia-shell
               ];
             }
             {

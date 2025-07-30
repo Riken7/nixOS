@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./vm.nix
     ./hardware-configuration.nix
     #./nvidia.nix
     ./services
@@ -38,7 +39,6 @@
     sops
     sshfs
     alacritty
-    prisma-engines
     chromium
     nerd-fonts.jetbrains-mono
     greetd.tuigreet
@@ -56,18 +56,20 @@
     pavucontrol
     superfile
     appimage-run
+    gemini-cli
     #mysql84
     #mysql-workbench
 
     bun
 
     #npm
-    nodePackages_latest.pnpm
-    nodePackages_latest.vercel
-    nodePackages_latest.prisma
+    #prisma-engines
+    #nodePackages_latest.pnpm
+    #nodePackages_latest.vercel
+    #nodePackages_latest.prisma
     openssl
     nodejs_24
-    postgresql_17
+    #postgresql_17
 
     #themes
     whitesur-icon-theme
@@ -173,7 +175,6 @@
     enable = true;
     binfmt = true;
   };
-
 
 #  sops = {
 #    age.keyFile = "/home/rik/.config/sops/age/keys.txt";

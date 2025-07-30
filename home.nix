@@ -17,6 +17,7 @@
     obs-studio
     obs-studio-plugins.input-overlay
     figma-linux
+    termusic
 
     screenkey
 
