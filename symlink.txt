@@ -1,3 +1,4 @@
 ln -s ~/.dotfiles/config/quickshell ~/.config/quickshell
 ln -s ~/.dotfiles/config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
 ln -s ~/.dotfiles/config/quickshell/caelestia/Wallpapers ~/Pictures/
+ln -s ~/.dotfiles/config/hypr/caelestia_shell.json  ~/.config/caelestia/shell.json

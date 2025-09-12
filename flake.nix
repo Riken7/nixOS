@@ -13,8 +13,8 @@
     hyprland = {
       url = "github:hyprwm/hyprland";
     };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak = {
@@ -41,14 +41,14 @@
       home-manager,
       ghostty,
       nix-flatpak,
-      quickshell,
       sops-nix,
+      caelestia-shell,
       #stylix,
       ...
     }@inputs:
     let
       lib = nixpkgs.lib;
-      system =  "x86_64-linux";
+      system = "x86_64-linux";
       #shellFlake = builtins.getFlake ./config/shell;
     in
     {
@@ -57,8 +57,8 @@
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
           modules = [
-          sops-nix.nixosModules.sops
-          #inputs.stylix.nixosModules.stylix
+            sops-nix.nixosModules.sops
+            #inputs.stylix.nixosModules.stylix
             ./configuration.nix
             ./hyprland.nix
             nix-flatpak.nixosModules.nix-flatpak
@@ -68,20 +68,25 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux"; };
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                system = "x86_64-linux";
+              };
 
               home-manager.users.rik = {
                 imports = [
                   ./home.nix
                   #inputs.stylix.nixosModules.stylix
                 ];
+                home.packages = [
+                caelestia-shell.packages.${system}.default
+                ];
               };
             }
             {
               environment.systemPackages = [
                 ghostty.packages.${system}.default
-                quickshell.packages.${system}.default
-                #shellFlake.packages.${system}.caelestia-shell
+                caelestia-shell.packages.${system}.default
               ];
             }
             {
