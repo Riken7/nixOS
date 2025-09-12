@@ -23,6 +23,11 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/mnt/kaliLinux" = {
+    device = "UUID=74e00edb-2c7a-4a26-a703-a5fb8d8dfef0";
+    fsType = "ext4";
+  };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

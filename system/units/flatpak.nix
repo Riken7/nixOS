@@ -8,6 +8,7 @@
     };
     packages = [
       "com.microsoft.Edge"
+      "com.google.Chrome"
     ];
   };
 }

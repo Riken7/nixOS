@@ -24,6 +24,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #stylix = {
+    #  url = "github:nix-community/stylix";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     #zen-browser = {
     #  url = "github:0xc000022070/zen-browser-flake";
     #  inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +43,7 @@
       nix-flatpak,
       quickshell,
       sops-nix,
+      #stylix,
       ...
     }@inputs:
     let
@@ -53,6 +58,7 @@
           system = "x86_64-linux";
           modules = [
           sops-nix.nixosModules.sops
+          #inputs.stylix.nixosModules.stylix
             ./configuration.nix
             ./hyprland.nix
             nix-flatpak.nixosModules.nix-flatpak
@@ -64,7 +70,12 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux"; };
 
-              home-manager.users.rik = import ./home.nix;
+              home-manager.users.rik = {
+                imports = [
+                  ./home.nix
+                  #inputs.stylix.nixosModules.stylix
+                ];
+              };
             }
             {
               environment.systemPackages = [

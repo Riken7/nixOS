@@ -8,6 +8,12 @@
     };
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
+  #programs.waybar = {
+  #  enable = true;
+  #  systemd = {
+  #    target = "hyprland-session.target";
+  #  };
+  #};
   environment.systemPackages = with pkgs;[
     greetd.tuigreet
     fish

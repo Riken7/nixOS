@@ -8,11 +8,20 @@
   imports = [
     ./system/nvim.nix
     ./modules/terminal.nix
+    #./config/hypr/rofi.nix
+    #./config/hypr/waybar.nix
+    #./config/stylix.nix
   ];
   home.username = "rik";
   home.homeDirectory = "/home/rik";
 
   home.packages = with pkgs; [
+
+    terraform
+    ansible
+    awscli2
+
+    p7zip
     youtube-music
     obs-studio
     obs-studio-plugins.input-overlay

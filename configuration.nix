@@ -34,12 +34,12 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
   environment.systemPackages = with pkgs; [
     firefox
     sops
     sshfs
     alacritty
-    chromium
     nerd-fonts.jetbrains-mono
     greetd.tuigreet
     wl-clipboard
@@ -98,7 +98,7 @@
   time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_IN";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_IN";
@@ -136,6 +136,9 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "kvm"
+      "libvirtd"
+      "qemu-libvirtd"
     ];
   };
   nix.settings.experimental-features = [
